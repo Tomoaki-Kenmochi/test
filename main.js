@@ -78,29 +78,103 @@ start.addEventListener('click', function(e) {
   }, 10);
 });
 
-stop.addEventListener('click', function(e) {
-
-    // 
-    const ms = elapsed % 1000;
-    const s = Math.floor(elapsed / 1000) % 60;
-    const m = Math.floor(elapsed / (1000*60)) % 60;
-    const h = Math.floor(elapsed / (1000*60*60));
+// stop.addEventListener('click', function(e) {
+    // const ms = elapsed % 1000;
+    // const s = Math.floor(elapsed / 1000) % 60;
+    // const m = Math.floor(elapsed / (1000*60)) % 60;
+    // const h = Math.floor(elapsed / (1000*60*60));
   
-    const msStr = ms.toString().padStart(3, '0');
-    const sStr = s.toString().padStart(2, '0');
-    const mStr = m.toString().padStart(2, '0');
-    const hStr = h.toString().padStart(2, '0');
+    // const msStr = ms.toString().padStart(3, '0');
+    // const sStr = s.toString().padStart(2, '0');
+    // const mStr = m.toString().padStart(2, '0');
+    // const hStr = h.toString().padStart(2, '0');
 
-    // function updateTime下で定数指定をしている為、同じように表示するにはここにも必要。
-    // 
+    
+
+//     // function updateTime下で定数指定をしている為、同じように表示するにはここにも必要。
+//     // 
+
+//     clearInterval(intervalId);
+//     intervalId = null;
+//     // record1.innerHTML = `${mStr}:${sStr}.${msStr}`;
+    
+// });
 
 
-    clearInterval(intervalId);
-    intervalId = null;
-    record.innerHTML = `${mStr}:${sStr}.${msStr}`;
-});
 
-reset.addEventListener('click', function(e) {
+// stop関連
+
+let not = 0;
+stop.addEventListener("click", function () {
+
+  const ms = elapsed % 1000;
+  const s = Math.floor(elapsed / 1000) % 60;
+  const m = Math.floor(elapsed / (1000*60)) % 60;
+  const h = Math.floor(elapsed / (1000*60*60));
+  
+  const msStr = ms.toString().padStart(3, '0');
+  const sStr = s.toString().padStart(2, '0');
+  const mStr = m.toString().padStart(2, '0');
+  const hStr = h.toString().padStart(2, '0');
+
+  not++;
+
+  if (not == 1) {
+    record1.innerHTML = `${mStr}:${sStr}.${msStr}`;
+    elapsed1 = elapsed;
+  } else if (not == 2) {
+    record2.innerHTML = `${mStr}:${sStr}.${msStr}`;
+    elapsed2 = elapsed;
+  } else if (not == 3) {
+    record3.innerHTML = `${mStr}:${sStr}.${msStr}`;
+    elapsed3 = elapsed;
+  } else if (not == 4) {
+    record4.innerHTML = `${mStr}:${sStr}.${msStr}`;
+    elapsed4 = elapsed;
+  } else if (not == 5) {
+    record5.innerHTML = `${mStr}:${sStr}.${msStr}`;
+    elapsed5 = elapsed;
+    
+    averege = [elapsed1 + elapsed2 + elapsed3 + elapsed4 + elapsed5]/5;
+
+    const a_ms = elapsed % 1000;
+    const a_s = Math.floor(averege / 1000) % 60;
+    const a_m = Math.floor(averege / (1000*60)) % 60;
+    // const a_h = Math.floor(averege / (1000*60*60));  
+
+    const a_msStr = a_ms.toString().padStart(3, '0');
+    const a_sStr = a_s.toString().padStart(2, '0');
+    const a_mStr = a_m.toString().padStart(2, '0');
+    // const a_hStr = h.toString().padStart(2, '0');
+
+    avg.innerHTML = "5回平均" + `${mStr}:${sStr}.${msStr}`;
+  };
+  
+
+  clearInterval(intervalId);
+  intervalId = null;
   elapsed = 0;
   updateTime();
+ 
 });
+
+
+// reset関連
+reset.addEventListener('click', function(e) {
+  // let score = ["record1","record2","record3","record4","record5"];
+  // scoreIndex = 0;
+  // scoreLength = score.length;
+  // // let res = document.getElementById("scoreLength");
+
+
+  document.getElementById("record1").textContent = "00:00.000";
+  document.getElementById("record2").textContent = "00:00.000";
+  document.getElementById("record3").textContent = "00:00.000";
+  document.getElementById("record4").textContent = "00:00.000";
+  document.getElementById("record5").textContent = "00:00.000";
+  document.getElementById("avg").textContent =  "00:00.000";
+});
+
+
+
+

@@ -1,4 +1,4 @@
-.random ,.time ,.record {
+.random ,.time ,.record  {
     border: solid;
 }
 
@@ -25,4 +25,17 @@
 
 .time {
     font-size: 100px;
+}
+
+.record {
+    font-size: larger;
+    text-align: center;
+}
+
+.avg {
+    margin-top: 2%;
+}
+
+li {
+    border-bottom: solid;
 }
