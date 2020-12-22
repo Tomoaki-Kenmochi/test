@@ -39,22 +39,31 @@ document.getElementsByTagName("button")[0].addEventListener("click" , ()=> {
 // 性質上、何時間は不要なので、時間関連は削除。
 
 const timeElement = document.getElementById('time');
+
 const start = document.getElementById('start');
+
 const stop = document.getElementById('stop');
+
 const reset = document.getElementById('reset');
 
-const record = document.getElementById("record");
+const record1 = document.getElementById("record1");
+const record2 = document.getElementById("record2");
+const record3 = document.getElementById("record3");
+const record4 = document.getElementById("record4");
+const record5 = document.getElementById("record5");
+
+// console.log(counter)
 
 // console.log(document.getElementById("record").innerText);
 
 // 経過時間のミリ秒
+
 let elapsed = 0;
 
 let intervalId = null;
 
 // stopボタンのClick回数
 let not = 0;
-
 
 function updateTime() {
   const ms = elapsed % 1000;
@@ -184,6 +193,16 @@ stop.addEventListener("click", function () {
   intervalId = null;
 
   elapsed = 0;
+
+  // ラップタイムの場合
+  // not = 0;
+  // document.getElementById("stop_counter").innerHTML = not;
+  // record1.innerHTML = "00:00.000"
+  // record2.innerHTML = "00:00.000"
+  // record3.innerHTML = "00:00.000"
+  // record4.innerHTML = "00:00.000"
+  // record5.innerHTML = "00:00.000"
+
   updateTime();
 
 });
